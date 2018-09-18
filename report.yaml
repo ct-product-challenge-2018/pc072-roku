@@ -1,6 +1,6 @@
 company:
   name: OpenS
-  # logo: 
+  logo: roku-logo.png
 product_hmw: Gain the trust (not just consent) of consumers to use their data for personalizing their viewing experience and what ads they see?
 # product_narrative: |
   
@@ -9,7 +9,7 @@ team:
   roster:
   - name: Ryan Sydnor
     email: rts97@cornell.edu
-    # picture: 
+    picture: ryan.jpg
     program: MBA
 assets:
 - title: Sprint 1 Presentation
