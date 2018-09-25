@@ -1,11 +1,11 @@
 company:
   name: OpenS
   logo: roku-logo.png
-product_hmw: Gain the trust (not just consent) of consumers to use their data for personalizing their viewing experience and what ads they see?
+product_hmw: How might we gain the trust (not just consent) of consumers to use their data for personalizing their viewing experience and what ads they see?
 # product_narrative: |
   
 team:
-  picture: roku-logo.png
+  picture: team_pic.jpg
   roster:
   - name: Ryan Sydnor
     email: rts97@cornell.edu
