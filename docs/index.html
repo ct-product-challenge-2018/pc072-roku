@@ -1,0 +1,70 @@
+<html>
+<head>
+    <style>
+.controls {
+  visibility: hidden;
+  opacity: 0.5;
+  width: 400px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -200px;
+  background-color: black;
+  box-shadow: 3px 3px 5px black;
+  transition: 1s all;
+  display: flex;
+}
+
+.player:hover .controls, player:focus .controls {
+  opacity: 1;
+}
+
+.timer {
+  line-height: 38px;
+  font-size: 10px;
+  font-family: monospace;
+  text-shadow: 1px 1px 0px black;
+  color: white;
+  flex: 5;
+  position: relative;
+}
+
+.timer div {
+  position: absolute;
+  background-color: rgba(255,255,255,0.2);
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 38px;
+  z-index: 2;
+}
+
+.timer span {
+  position: absolute;
+  z-index: 3;
+  left: 19px;
+}
+    </style>
+</head>
+<body>
+<div class="player" style="position: relative; width:100%; height:100%;">
+  <video controls style="width:100%; height:100%;">
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+    <!-- fallback content here -->
+  </video>
+</div>
+</body>
+    <script type="text/javascript">
+var media = document.querySelector('video');
+
+media.addEventListener('pause', function(){
+    console.log('pause', media.currentTime);
+});
+
+
+setInterval(function(){
+    console.log(media.currentTime)
+},1000)
+    </script>
+</html>
