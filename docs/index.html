@@ -19,9 +19,9 @@
 
 #overlay {
     position: absolute;
-    display: none;
+    display: block;
     width: 100%;
-    height: 120%;
+    height: 100%;
     top: 0;
     left: 0;
     background-color: rgba(0,0,0,0.8);
@@ -29,13 +29,6 @@
     cursor: pointer;
 }
 
-/*#overlay a {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -250px;
-  margin-top: -250px;
-}*/
 
 /* The Close Button */
 .close {
@@ -52,20 +45,37 @@
     cursor: pointer;
 }
 
+.jumbo-wrap{
+  height: 100%;
+  width: 100%;
+}
+
 .jumbotron{
   width: 50% !important;
-  padding-left: 120px !important;
-  margin-top: 150px;
-  margin-left: 400px;
+  margin: auto;
 }
+
 
 .jumbotron p{
   padding-top: 20px;
+  text-align: center;
+}
+
+.jumbo-content {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+} 
+
+h3 {
+  text-align: center;
 }
 
 img {
     border-radius: 8px;
     width: 300px;
+    margin: auto;
+    display: block;
 }
 
 
@@ -79,21 +89,23 @@ img {
     Your browser doesn't support streaming this video.
   </video>
   <div id="overlay" onclick="off()">
-
+    <div class="jumbo-wrap">
       <div class="jumbotron">
         <span class="close">&times;</span>
-        <h3>Product detail</h3>     
-        <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon">
-        <!-- <p class="lead">This is a bb-8 model.</p> -->
-        <br/>
-        <p>
-          <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg btn-success" role="button">Buy it today</a>
-          <a class="btn btn-lg btn-success" href="#" role="button">Save for later</a>
-          <a class="btn btn-lg btn-success" href="#" role="button">Not interested</a>
+          <div class="jumbo-content">
+          <h3 id="productTitle">Product detail</h3>     
+          <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon"></a>
+          <br/>
+          <p>
+            <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg btn-success" role="button">Buy it today</a>
+            <a class="btn btn-lg btn-success" href="#" role="button">Save for later</a>
+            <a class="btn btn-lg btn-success" href="#" role="button">Not interested</a>
 
 
-        </p>
+          </p>
       </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -102,6 +114,7 @@ img {
 var products = {
   "5-10": [
     {
+        "title": "wow",
         "img": "https://images-na.ssl-images-amazon.com/images/I/91lXOazRnFL._SX679_.jpg",
         "url": "https://www.amazon.com/LEGO-Star-Wars-First-Building/dp/B075QQ9WW8"
     }
@@ -151,13 +164,15 @@ function findRange(currentTime) {
 
 var media = document.querySelector('video');
 var productUrl = document.querySelector('#productUrl');
-var productImg = document.querySelector('#productImg')
+var productImg = document.querySelector('#productImg');
+var productTitle = document.querySelector('#productTitle');
 
 media.addEventListener('pause', function(){
   const range = findRange(media.currentTime);
   const product = products[range][0];
   productUrl.href = product.url;
   productImg.src = product.img;
+  productTitle.innerText = product.title;
   on();
 });
 media.addEventListener('playing', off)
