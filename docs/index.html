@@ -2,6 +2,13 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <style>
 
 .player, video {
@@ -14,7 +21,7 @@
     position: absolute;
     display: none;
     width: 100%;
-    height: 100%;
+    height: 120%;
     top: 0;
     left: 0;
     background-color: rgba(0,0,0,0.8);
@@ -22,13 +29,45 @@
     cursor: pointer;
 }
 
-#overlay a {
+/*#overlay a {
   position: absolute;
   left: 50%;
   top: 50%;
   margin-left: -250px;
   margin-top: -250px;
+}*/
+
+/* The Close Button */
+.close {
+    color: #565656;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.jumbotron{
+  width: 50% !important;
+  padding-left: 120px !important;
+  margin-top: 150px;
+  margin-left: 400px;
+}
+
+.jumbotron p{
+  padding-top: 20px;
+}
+
+img {
+    border-radius: 8px;
+    width: 300px;
+}
+
 
 </style>
 </head>
@@ -36,51 +75,43 @@
 
 <div class="player">  
   <video controls>
-    <source src="https://ct-product-challenge-2018.github.io/pc072-roku/trailer.mp4" type="video/mp4">
+    <source src="https://r6---sn-ab5l6n67.c.drive.google.com/videoplayback?id=d7c197907e321416&itag=22&source=webdrive&requiressl=yes&mm=30&mn=sn-ab5l6n67&ms=nxu&mv=m&pl=16&sc=yes&ttl=transient&ei=I7HYW6GVJcvLqQWvo7aQBg&susc=dr&driveid=1EZ3WE8yE8eCVeCTviDWfUMktPppytSFJ&app=texmex&mime=video/mp4&dur=139.900&lmt=1540600887021686&mt=1540927716&ip=128.84.95.169&ipbits=0&expire=1540942179&cp=QVNJUkpfUVFVSlhOOjI1R2tGNjJmQWRR&sparams=ip,ipbits,expire,id,itag,source,requiressl,mm,mn,ms,mv,pl,sc,ttl,ei,susc,driveid,app,mime,dur,lmt,cp&signature=89EDD2142C55F8CB308667E945BAB12BD7F7DA04560103DDB0394B308F0F338E.859F64DBB8734F7A01A922B5CE9E479467E3FABF2AAA9676128C4CEAEE646747&key=us0&cpn=72NlHFeOgbynrW-0&c=WEB_EMBEDDED_PLAYER&cver=20181027" type="video/mp4">
     Your browser doesn't support streaming this video.
   </video>
   <div id="overlay" onclick="off()">
-    <a id="productUrl" href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon">
+
+      <div class="jumbotron">
+        <span class="close">&times;</span>
+        <h3>Product detail</h3>     
+        <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon">
+        <!-- <p class="lead">This is a bb-8 model.</p> -->
+        <br/>
+        <p>
+          <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg btn-success" role="button">Buy it today</a>
+          <a class="btn btn-lg btn-success" href="#" role="button">Save for later</a>
+          <a class="btn btn-lg btn-success" href="#" role="button">Not interested</a>
+
+
+        </p>
+      </div>
   </div>
 </div>
 
 <script type="text/javascript">
 
 var products = {
-  "5-10": [
+  "0-5": [
     {
         "img": "https://images-na.ssl-images-amazon.com/images/I/91lXOazRnFL._SX679_.jpg",
         "url": "https://www.amazon.com/LEGO-Star-Wars-First-Building/dp/B075QQ9WW8"
     }
   ],
-  "10-14": [
+  "6-10": [
     {
         "img": "https://images-na.ssl-images-amazon.com/images/I/81QbzgNccXL._SX679_.jpg",
         "url": "https://www.amazon.com/Star-Wars-First-Stormtrooper-Electronic/dp/B01N3AYU5J"
     }
-  ],
-  "15-21": [
-    {
-      "url": "https://www.amazon.com/Star-Wars-Episode-Action-Figure/dp/B06Y4FYVCN",
-      "img": ""
-    }
-  ],
-  "22-27": [{
-    "url": "https://www.amazon.com/Star-Wars-Costume-Kids-Last/dp/B074W5VLMS",
-    "img": ""
-  }],
-  "28-35": [{
-    "url": "https://www.amazon.com/Star-Wars-Leather-Backpack-Standard/dp/B078MTK5BF",
-    "img": ""
-  }],
-  "36-42": [{
-    "url": "https://www.amazon.com/Star-Wars-Skywalker-4-Inch-Action/dp/B075SMH8B9",
-    "img": ""
-  }],
-  "42-56":[{
-    "img": "",
-    "url": "https://www.amazon.com/Star-Wars-Black-Training-Lightsaber/dp/B01LYO27L0"
-  }]
+  ]
 }
 
 function findRange(currentTime) {
