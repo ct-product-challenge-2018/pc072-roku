@@ -51,8 +51,9 @@
 }
 
 .jumbotron{
-  width: 50% !important;
+  /*width: 50% !important;*/
   margin: auto;
+  height: 700px;
 }
 
 
@@ -73,9 +74,13 @@ h3 {
 
 img {
     border-radius: 8px;
-    width: 300px;
+    width: 200px;
     margin: auto;
     display: block;
+}
+
+.btn-success{
+  margin: 6px;
 }
 
 
@@ -87,7 +92,7 @@ img {
   <div id="overlay">
     <div class="jumbo-wrap">
       <div class="jumbotron">
-        <span class="close">&times;</span>
+        <!-- <span class="close">&times;</span> -->
           <div class="jumbo-content">
           <h3 id="productTitle">Product detail</h3>     
           <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon"></a>
@@ -95,8 +100,8 @@ img {
           <p>
             <a id="previousProduct" class="btn btn-lg btn-success" href="#" role="button">Previous Product</a>
             <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg btn-success" role="button">Buy it today</a>
-            <a class="btn btn-lg btn-success" href="#" role="button">Save for later</a>
-            <a class="btn btn-lg btn-success" href="#" role="button">Not interested</a>
+<!--             <a class="btn btn-lg btn-success" href="#" role="button">Save for later</a>
+            <a class="btn btn-lg btn-success" href="#" role="button">Not interested</a> -->
             <a id="nextProduct" class="btn btn-lg btn-success" href="#" role="button">Next Product</a>
           </p>
       </div>
