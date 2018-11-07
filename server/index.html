@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<style>
+
+.player, video {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#overlay {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1;
+    cursor: pointer;
+}
+
+
+/* The Close Button */
+.close {
+    color: #565656;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.jumbo-wrap{
+  height: 100%;
+  width: 100%;
+  margin-top:100px;
+}
+
+.jumbotron{
+  width: 60% !important;
+  margin: auto;
+}
+
+
+.jumbotron p{
+  padding-top: 20px;
+  text-align: center;
+}
+
+.jumbo-content {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+} 
+
+h3 {
+  text-align: center;
+}
+
+img {
+    border-radius: 8px;
+    width: 300px;
+    margin: auto;
+    display: block;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="player">  
+  <video controls>
+    <source src="https://ct-product-challenge-2018.github.io/pc072-roku/trailer.mp4" type="video/mp4">
+    Your browser doesn't support streaming this video.
+  </video>
+  <div id="overlay" onclick="off()">
+    <div class="jumbo-wrap">
+      <div class="jumbotron">
+        <span class="close">&times;</span>
+          <div class="jumbo-content">
+          <h3 id="productTitle">Product detail</h3>     
+          <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon"></a>
+          <br/>
+          <p>
+            <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg btn-primary" role="button">Buy</a>
+            <a class="btn btn-lg btn-primary" href="#" role="button">Share on social media</a>
+            <a class="btn btn-lg btn-primary" href="#" role="button">Send me an email</a>
+
+
+          </p>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+var products = {
+  "5-10": [
+    {
+        "title": "LEGO AT-AT",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/91lXOazRnFL._SX679_.jpg",
+        "url": "https://www.amazon.com/LEGO-Star-Wars-First-Building/dp/B075QQ9WW8"
+    }
+  ],
+  "10-14": [
+    {
+        "title": "Stormtrooper Electronic Mask",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/81QbzgNccXL._SX679_.jpg",
+        "url": "https://www.amazon.com/Star-Wars-First-Stormtrooper-Electronic/dp/B01N3AYU5J"
+    }
+  ],
+  "15-21": [
+    {
+      "title":"Star Wars 6' Kylo Ren Action Figure",
+      "url": "https://www.amazon.com/Star-Wars-Episode-Action-Figure/dp/B06Y4FYVCN",
+      "img": "https://images-na.ssl-images-amazon.com/images/I/91DriEThV1L._SL1500_.jpg"
+    }
+  ],
+  "22-27": [{
+    "title": "Star Wars Rey Costume for Kids",
+    "url": "https://www.amazon.com/Star-Wars-Costume-Kids-Last/dp/B074W5VLMS",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/51aT%2BwhW4zL._UX679_.jpg"
+  }],
+  "28-35": [{
+    "title":"Star Wars The Last Jedi Rey Mini Faux Leather Backpack Standard",
+    "url": "https://www.amazon.com/Star-Wars-Leather-Backpack-Standard/dp/B078MTK5BF",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/41wK2cCGj1L.jpg"
+  }],
+  "36-42": [{
+    "title":"Star Wars:The Last Jedi Luke Skywalker 3 3/4-Inch Action Figure",
+    "url": "https://www.amazon.com/Star-Wars-Skywalker-4-Inch-Action/dp/B075SMH8B9",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/810jYSh6-EL._SL1500_.jpg"
+  }],
+  "42-56":[{
+    "title":"The Black Series Rey (Jedi Training) Force FX Lightsaber",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/61VxOAUiuwL._SL1500_.jpg",
+    "url": "https://www.amazon.com/Star-Wars-Black-Training-Lightsaber/dp/B01LYO27L0"
+  }]
+}
+
+function findRange(currentTime) {
+  const keys = Object.keys(products);
+  for(var x=0; x<keys.length; x++){
+    const key = keys[x];
+    const range = key.split('-')
+    const lower = range[0]
+    const upper = range[1]
+    if(currentTime >= lower && currentTime <= upper) {
+      return key;
+    }
+  }
+}
+
+var media = document.querySelector('video');
+var productUrl = document.querySelector('#productUrl');
+var productImg = document.querySelector('#productImg');
+var productTitle = document.querySelector('#productTitle');
+
+media.addEventListener('pause', function(){
+  const range = findRange(media.currentTime);
+  const product = products[range][0];
+  productUrl.href = product.url;
+  productImg.src = product.img;
+  productTitle.innerText = product.title;
+  on();
+});
+media.addEventListener('playing', off)
+
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+  media.play();
+}
+
+</script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io('http://localhost:3000');
+  socket.on('connect', function(){console.log('connected')});
+  socket.on('blah', function(data){console.log(data)});
+  setInterval(function(){
+    socket.emit('foo', [5,6,7]);
+  }, 1000)
+  socket.on('disconnect', function(){});
+</script>
+</body>
+</html>
