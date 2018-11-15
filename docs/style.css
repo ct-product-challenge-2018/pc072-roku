@@ -102,6 +102,7 @@ a[aria-expanded="true"] {
     color: #fff;
     background: #6d7fcc;
     text-align: center;
+    cursor: pointer;
 }
 
 a[data-toggle="collapse"] {
@@ -258,4 +259,7 @@ video::-webkit-media-controls-overlay-play-button {
   display: none!important;
   /* animation-duration: 0.1s!important; */
 }
+
+#productTitleSide{
+  cursor: pointer;
 }
