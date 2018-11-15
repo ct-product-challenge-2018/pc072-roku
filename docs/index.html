@@ -33,6 +33,7 @@
     background-color: rgba(0,0,0,0.8);
     z-index: 1;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 
@@ -88,7 +89,8 @@ img {
 
 </style>
 </head>
-<body onclick="pause()">
+<body>
+<!-- <body onclick="paus()"> -->
   <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
       <span>Sidebar</span>
   </button> -->
@@ -105,7 +107,7 @@ img {
 
           <ul class="list-unstyled components">
               <!-- <p>Product 1</p> -->
-              <li class="active">
+              <li class="active" onclick="showDetail()">
                   <a id="productTitleSide">Product 1</a>
               </li>
               <li>
@@ -127,7 +129,6 @@ img {
           </ul>
       </nav>
   </div>
-<div class="overlaybar"></div>
 
 <div class="player">
   <video controls>
@@ -229,10 +230,10 @@ var productTitleSide = document.querySelector('#productTitleSide');
 document.onkeypress = function(e) { if ( (e || window.event).keyCode === 32 /* space key */ )
   { media.paused ? media.play() : media.pause(); } };
 
-function pause(){
+function paus(){
   media.paused ? media.play() : media.pause();
   $('#sidebar').removeClass('active');
-  $('.overlaybar').removeClass('active');
+  // $('.overlaybar').removeClass('active');
 }
 
 media.addEventListener('pause', function(){
@@ -248,9 +249,8 @@ media.addEventListener('pause', function(){
 media.addEventListener('playing', off)
 
 function on() {
-  document.getElementById("overlay").style.display = "block";
+  // document.getElementById("overlay").style.display = "block";
   $('#sidebar').addClass('active');
-  $('.overlaybar').addClass('active');
   $('.collapse.in').toggleClass('in');
   $('a[aria-expanded=true]').attr('aria-expanded', 'false');
 }
@@ -259,7 +259,11 @@ function off() {
   document.getElementById("overlay").style.display = "none";
   media.play();
   $('#sidebar').removeClass('active');
-  $('.overlaybar').removeClass('active');
+}
+
+function showDetail(){
+  document.getElementById("overlay").style.display = "block";
+  $('#sidebar').removeClass('active');
 }
 
 
@@ -276,12 +280,10 @@ function off() {
 
         $('#dismiss, .overlaybar').on('click', function () {
             $('#sidebar').removeClass('active');
-            $('.overlaybar').removeClass('active');
         });
 
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').addClass('active');
-            $('.overlaybar').addClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         }
