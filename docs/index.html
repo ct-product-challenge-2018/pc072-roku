@@ -19,10 +19,6 @@
 </head>
 <body>
 <!-- <body onclick="paus()"> -->
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-      <span>Sidebar</span>
-
-  </button>
   <div class="wrapper">
       <!-- Sidebar  -->
       <nav id="sidebar">
@@ -35,7 +31,6 @@
           </div>
 
           <ul class="list-unstyled components">
-              <!-- <p>Product 1</p> -->
               <li class="active" onclick="showDetail()">
                   <a id="productTitleSide">Product 1</a>
                   <img id="productImgSide" src="amazon_logo.png" alt="Amazon"></a>
@@ -49,9 +44,9 @@
           </ul>
 
           <ul class="list-unstyled CTAs">
-              <li>
+              <!-- <li>
                   <a href="" class="share">Share with friends</a>
-              </li>
+              </li> -->
               <br>
               <li>
                   <a href="" class="email">Send me email</a>
@@ -74,10 +69,11 @@
         <span class="close">&times;</span>
           <div class="jumbo-content">
           <h3 id="productTitle">Product detail</h3>
+          <br>
           <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon"></a>
           <br/>
           <p>
-            <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg email" role="button">Buy</a>
+            <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg email" role="button">Buy this</a>
             <a class="btn btn-lg email" href="#" role="button">Send me an email</a>
           </p>
       </div>
