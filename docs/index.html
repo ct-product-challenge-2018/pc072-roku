@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="style.css">
 
 <!-- Font Awesome JS -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
@@ -91,29 +92,29 @@ img {
 }
 #prompt {
   z-index: 999;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: red;
-    -webkit-animation-name: prompt_animation; /* Safari 4.0 - 8.0 */
+    width: 30px;
+    height: 30px;
     -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
     animation-name: prompt_animation;
     animation-duration: 2s;
-    background-color: red;
     display: none;
+    position: absolute;
+    left: 95%;
+    top: 6%;
+    cursor: pointer;
 }
 
  /*Safari 4.0 - 8.0*/
 @-webkit-keyframes prompt_animation {
-    0% {opacity: 1;}
-    75% {opacity: 1;}
+    0% {opacity: 0.5;}
+    75% {opacity: 0.5;}
     100% {opacity: 0;}
 }
 
  /*Standard syntax */
 @keyframes prompt_animation {
-    0% {opacity: 1;}
-    75% {opacity: 1;}
+    0% {opacity: 0.5;}
+    75% {opacity: 0.5;}
     100% {opacity: 0;}
 }
 
@@ -123,6 +124,7 @@ img {
 <!-- <body onclick="paus()"> -->
   <button type="button" id="sidebarCollapse" class="btn btn-info">
       <span>Sidebar</span>
+
   </button>
   <div class="wrapper">
       <!-- Sidebar  -->
@@ -167,6 +169,7 @@ img {
     Your browser doesn't support streaming this video.
   </video>
   <div id="prompt" onclick="on()">
+    <i class="fab fa-adversal fa-3x" style="color:white"></i>
   </div>
   <div id="overlay" onclick="off()">
     <div class="jumbo-wrap">
@@ -177,11 +180,8 @@ img {
           <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon"></a>
           <br/>
           <p>
-            <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg btn-primary" role="button">Buy</a>
-            <a class="btn btn-lg btn-primary" href="#" role="button">Share on social media</a>
-            <a class="btn btn-lg btn-primary" href="#" role="button">Send me an email</a>
-
-
+            <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg" role="button">Buy</a>
+            <a class="btn btn-lg" href="#" role="button">Send me an email</a>
           </p>
       </div>
       </div>
@@ -282,15 +282,7 @@ function on() {
   productTitle.innerText = product.title;
 
   productTitleSide.innerText = product.title;
-<<<<<<< HEAD
   productImgSide.src = product.img;
-  on();
-});
-media.addEventListener('playing', off)
-
-function on() {
-=======
->>>>>>> 60c3d7c1e4eeee11f50718da2dbcf2f5130521d2
   // document.getElementById("overlay").style.display = "block";
   $('#sidebar').addClass('active');
   $('.collapse.in').toggleClass('in');
