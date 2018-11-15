@@ -106,18 +106,13 @@ img {
           <ul class="list-unstyled components">
               <!-- <p>Product 1</p> -->
               <li class="active">
-                  <a href="#Submenu" data-toggle="collapse" aria-expanded="false">Product 1</a>
-                  <ul class="collapse list-unstyled" id="Submenu">
-                      <li>
-                          <a href="#">Detail 1</a>
-                      </li>
-                      <li>
-                          <a href="#">Detail 2</a>
-                      </li>
-                  </ul>
+                  <a id="productTitleSide">Product 1</a>
               </li>
               <li>
                   <a href="" data-toggle="collapse" aria-expanded="false">Product 2</a>
+              </li>
+              <li>
+                  <a href="" data-toggle="collapse" aria-expanded="false">Product 3</a>
               </li>
           </ul>
 
@@ -184,7 +179,7 @@ var products = {
   ],
   "15-21": [
     {
-      "title":"Star Wars 6' Kylo Ren Action Figure",
+      "title":"Kylo Ren Action Figure",
       "url": "https://www.amazon.com/Star-Wars-Episode-Action-Figure/dp/B06Y4FYVCN",
       "img": "https://images-na.ssl-images-amazon.com/images/I/91DriEThV1L._SL1500_.jpg"
     }
@@ -195,12 +190,12 @@ var products = {
     "img": "https://images-na.ssl-images-amazon.com/images/I/51aT%2BwhW4zL._UX679_.jpg"
   }],
   "28-35": [{
-    "title":"Star Wars The Last Jedi Rey Mini Faux Leather Backpack Standard",
+    "title":"Rey Mini Faux Leather Backpack Standard",
     "url": "https://www.amazon.com/Star-Wars-Leather-Backpack-Standard/dp/B078MTK5BF",
     "img": "https://images-na.ssl-images-amazon.com/images/I/41wK2cCGj1L.jpg"
   }],
   "36-42": [{
-    "title":"Star Wars:The Last Jedi Luke Skywalker 3 3/4-Inch Action Figure",
+    "title":"Luke Skywalker 3 3/4-Inch Action Figure",
     "url": "https://www.amazon.com/Star-Wars-Skywalker-4-Inch-Action/dp/B075SMH8B9",
     "img": "https://images-na.ssl-images-amazon.com/images/I/810jYSh6-EL._SL1500_.jpg"
   }],
@@ -229,6 +224,8 @@ var productUrl = document.querySelector('#productUrl');
 var productImg = document.querySelector('#productImg');
 var productTitle = document.querySelector('#productTitle');
 
+var productTitleSide = document.querySelector('#productTitleSide');
+
 document.onkeypress = function(e) { if ( (e || window.event).keyCode === 32 /* space key */ )
   { media.paused ? media.play() : media.pause(); } };
 
@@ -244,6 +241,8 @@ media.addEventListener('pause', function(){
   productUrl.href = product.url;
   productImg.src = product.img;
   productTitle.innerText = product.title;
+
+  productTitleSide.innerText = product.title;
   on();
 });
 media.addEventListener('playing', off)
@@ -268,6 +267,7 @@ function off() {
 
 </script>
 
+<!-- this part can be deleted later -->
 <script type="text/javascript">
     $(document).ready(function () {
         $("#sidebar").mCustomScrollbar({
