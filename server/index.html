@@ -89,9 +89,9 @@ img {
 </style>
 </head>
 <body onclick="pause()">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
+  <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
       <span>Sidebar</span>
-  </button>
+  </button> -->
   <div class="wrapper">
       <!-- Sidebar  -->
       <nav id="sidebar">
@@ -170,26 +170,26 @@ var products = {
         "url": "https://www.amazon.com/LEGO-Star-Wars-First-Building/dp/B075QQ9WW8"
     }
   ],
-  "10-14": [
+  "10-15": [
     {
         "title": "Stormtrooper Electronic Mask",
         "img": "https://images-na.ssl-images-amazon.com/images/I/81QbzgNccXL._SX679_.jpg",
         "url": "https://www.amazon.com/Star-Wars-First-Stormtrooper-Electronic/dp/B01N3AYU5J"
     }
   ],
-  "15-21": [
+  "15-22": [
     {
       "title":"Kylo Ren Action Figure",
       "url": "https://www.amazon.com/Star-Wars-Episode-Action-Figure/dp/B06Y4FYVCN",
       "img": "https://images-na.ssl-images-amazon.com/images/I/91DriEThV1L._SL1500_.jpg"
     }
   ],
-  "22-27": [{
+  "22-28": [{
     "title": "Star Wars Rey Costume for Kids",
     "url": "https://www.amazon.com/Star-Wars-Costume-Kids-Last/dp/B074W5VLMS",
     "img": "https://images-na.ssl-images-amazon.com/images/I/51aT%2BwhW4zL._UX679_.jpg"
   }],
-  "28-35": [{
+  "28-36": [{
     "title":"Rey Mini Faux Leather Backpack Standard",
     "url": "https://www.amazon.com/Star-Wars-Leather-Backpack-Standard/dp/B078MTK5BF",
     "img": "https://images-na.ssl-images-amazon.com/images/I/41wK2cCGj1L.jpg"
@@ -278,7 +278,7 @@ function off() {
             $('#sidebar').removeClass('active');
             $('.overlaybar').removeClass('active');
         });
-
+        
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').addClass('active');
             $('.overlaybar').addClass('active');
