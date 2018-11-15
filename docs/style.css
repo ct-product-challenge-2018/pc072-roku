@@ -141,4 +141,6 @@ a.email,
 a.email:hover {
     background: #6d7fcc !important;
     color: #fff !important;
+    margin-left: 10px;
+    margin-right: 10px;
 }
