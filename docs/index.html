@@ -89,7 +89,33 @@ img {
 #productImgSide{
     width: 200px;
 }
+#prompt {
+  z-index: 999;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: red;
+    -webkit-animation-name: prompt_animation; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    animation-name: prompt_animation;
+    animation-duration: 2s;
+    background-color: red;
+    display: none;
+}
 
+ /*Safari 4.0 - 8.0*/
+@-webkit-keyframes prompt_animation {
+    0% {opacity: 1;}
+    75% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+ /*Standard syntax */
+@keyframes prompt_animation {
+    0% {opacity: 1;}
+    75% {opacity: 1;}
+    100% {opacity: 0;}
+}
 
 </style>
 </head>
@@ -140,6 +166,8 @@ img {
     <source src="https://ct-product-challenge-2018.github.io/pc072-roku/trailer.mp4" type="video/mp4">
     Your browser doesn't support streaming this video.
   </video>
+  <div id="prompt" onclick="on()">
+  </div>
   <div id="overlay" onclick="off()">
     <div class="jumbo-wrap">
       <div class="jumbotron">
@@ -223,6 +251,7 @@ function findRange(currentTime) {
       return key;
     }
   }
+  return false;
 }
 
 var media = document.querySelector('video');
@@ -242,7 +271,10 @@ function paus(){
   // $('.overlaybar').removeClass('active');
 }
 
-media.addEventListener('pause', function(){
+media.addEventListener('pause', on);
+media.addEventListener('playing', off);
+
+function on() {
   const range = findRange(media.currentTime);
   const product = products[range][0];
   productUrl.href = product.url;
@@ -250,12 +282,15 @@ media.addEventListener('pause', function(){
   productTitle.innerText = product.title;
 
   productTitleSide.innerText = product.title;
+<<<<<<< HEAD
   productImgSide.src = product.img;
   on();
 });
 media.addEventListener('playing', off)
 
 function on() {
+=======
+>>>>>>> 60c3d7c1e4eeee11f50718da2dbcf2f5130521d2
   // document.getElementById("overlay").style.display = "block";
   $('#sidebar').addClass('active');
   $('.collapse.in').toggleClass('in');
@@ -268,13 +303,24 @@ function off() {
   $('#sidebar').removeClass('active');
 }
 
+media.ontimeupdate = function() {ad_prompt()};
+
+var prev_range = false;
+
+function ad_prompt() {
+  cur_range = findRange(media.currentTime);
+  if (cur_range != prev_range) {
+    prev_range = cur_range;
+    var prompt = document.getElementById("prompt");
+    prompt.style.display = "block";
+    prompt.addEventListener("animationend", function() {prompt.style.display = "none"}, false);
+  }
+}
+
 function showDetail(){
   document.getElementById("overlay").style.display = "block";
   $('#sidebar').removeClass('active');
 }
-
-
-
 
 </script>
 
