@@ -86,14 +86,18 @@ img {
     display: block;
 }
 
+#productImgSide{
+    width: 200px;
+}
+
 
 </style>
 </head>
 <body>
 <!-- <body onclick="paus()"> -->
-  <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
+  <button type="button" id="sidebarCollapse" class="btn btn-info">
       <span>Sidebar</span>
-  </button> -->
+  </button>
   <div class="wrapper">
       <!-- Sidebar  -->
       <nav id="sidebar">
@@ -109,6 +113,7 @@ img {
               <!-- <p>Product 1</p> -->
               <li class="active" onclick="showDetail()">
                   <a id="productTitleSide">Product 1</a>
+                  <img id="productImgSide" src="amazon_logo.png" alt="Amazon"></a>
               </li>
               <li>
                   <a href="" data-toggle="collapse" aria-expanded="false">Product 2</a>
@@ -224,8 +229,9 @@ var media = document.querySelector('video');
 var productUrl = document.querySelector('#productUrl');
 var productImg = document.querySelector('#productImg');
 var productTitle = document.querySelector('#productTitle');
-
 var productTitleSide = document.querySelector('#productTitleSide');
+var productImgSide = document.querySelector('#productImgSide');
+
 
 document.onkeypress = function(e) { if ( (e || window.event).keyCode === 32 /* space key */ )
   { media.paused ? media.play() : media.pause(); } };
@@ -244,6 +250,7 @@ media.addEventListener('pause', function(){
   productTitle.innerText = product.title;
 
   productTitleSide.innerText = product.title;
+  productImgSide.src = product.img;
   on();
 });
 media.addEventListener('playing', off)
