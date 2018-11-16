@@ -42,8 +42,8 @@
   </nav>
 </div>
 
-<div class="player" onclick="paus()">
-  <video controls>
+<div class="player">
+  <video onclick="paus()" controls>
     <source src="https://ct-product-challenge-2018.github.io/pc072-roku/trailer.mp4" type="video/mp4">
     Your browser doesn't support streaming this video.
   </video>
@@ -181,7 +181,6 @@ document.onkeypress = function(e) { if ( (e || window.event).keyCode === 32 /* s
 function paus(){
   media.paused ? media.play() : media.pause();
   $('#sidebar').removeClass('active');
-  // $('.overlaybar').removeClass('active');
 }
 
 media.addEventListener('pause', on);
