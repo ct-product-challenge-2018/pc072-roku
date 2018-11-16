@@ -1,3 +1,4 @@
+# you need to install cv2
 import cv2
 interval = 1 # every 1 seconds
 
