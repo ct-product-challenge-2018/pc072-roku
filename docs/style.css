@@ -263,3 +263,9 @@ video::-webkit-media-controls-overlay-play-button {
 .productTitleSide{
   cursor: pointer;
 }
+
+#productlist>.activeProduct{
+  background-color: white;
+  color:black;
+  font-weight:bold;
+}
