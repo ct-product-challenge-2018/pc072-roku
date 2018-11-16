@@ -215,6 +215,7 @@ function on() {
   $('.collapse.in').toggleClass('in');
   $('a[aria-expanded=true]').attr('aria-expanded', 'false');
   listcounter = 0;
+  console.log('on', listcounter)
 }
 
 function off() {
@@ -276,35 +277,38 @@ function showDetail(i){
 $(document).keydown(function(e) {
   var $curr = $('.activeProduct');
   const range = findRange(media.currentTime);
-  // console.log(i);
   switch (e.keyCode) {
+
       case 38:
-           $curr.css("background-color", "#7386D5");
-           $curr.css("color", "white");
-           $curr.css("font-weight", "normal");
-           $('.activeProduct').removeClass();
            if(listcounter > 0) {
+             listcounter--;
+             
+             $curr.css("background-color", "#7386D5");
+             $curr.css("color", "white");
+             $curr.css("font-weight", "normal");
+             $('.activeProduct').removeClass();
+           
              $curr = $curr.prev();
              $curr.addClass('activeProduct');
              $curr.css("background-color", "white");
              $curr.css("color", "black");
              $curr.css("font-weight", "bold");
-             listcounter--;
-             // console.log(i);
+             $('#sidebar').mCustomScrollbar('scrollTo', $curr);
           }
         break;
       case 40:
-          $curr.css("background-color", "#7386D5");
-          $curr.css("color", "white");
-          $curr.css("font-weight", "normal");
-          $('.activeProduct').removeClass();
-          if(listcounter < products[range].length) {
+          if(listcounter < products[range].length-1) {
+            listcounter++;
+            $curr.css("background-color", "#7386D5");
+            $curr.css("color", "white");
+            $curr.css("font-weight", "normal");
+            $('.activeProduct').removeClass();
             $curr = $curr.next();
             $curr.addClass('activeProduct');
             $curr.css("background-color", "white");
             $curr.css("color", "black");
             $curr.css("font-weight", "bold");
-            listcounter++;
+            $('#sidebar').mCustomScrollbar('scrollTo', $curr);
           }
         break;
       case 13: // enter key
