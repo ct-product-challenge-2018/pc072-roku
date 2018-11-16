@@ -50,7 +50,7 @@
   <div id="prompt" onclick="on()">
     <i class="fab fa-adversal fa-3x" style="color:white"></i>
   </div>
-  <div id="overlay" onclick="off()">
+  <div id="overlay">
     <div class="jumbo-wrap">
       <div class="jumbotron">
           <div id="detail" class="jumbo-content">
@@ -225,8 +225,8 @@ function showDetail(i){
   const product = products[range][i];
   $('#detail').append(
     '<h3 class="productTitle">' + product.title +'</h3><br><a href="' +
-    product.url + '"onclick="off()"><img src="' + product.img +
-    '" alt="Amazon"></a></br><p><a href="' + product.url+'"target="_blank" class="btn btn-lg email" role="button">Buy this</a>'+
+    product.url + '"><img src="' + product.img +
+    '" alt="Product Not Found"></a></br><p><a href="' + product.url+'"target="_blank" class="btn btn-lg email" role="button">Buy this</a>'+
     '<a class="btn btn-lg email" href="#" role="button">Send me an email</a></p>'
   );
   document.getElementById("overlay").style.display = "block";
