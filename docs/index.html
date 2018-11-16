@@ -30,23 +30,17 @@
               <h3>Product List</h3>
           </div>
 
-          <ul class="list-unstyled components">
-              <li class="active" onclick="showDetail()">
+          <ul id="productlist" class="list-unstyled components">
+              <!-- <li class="active" onclick="showDetail()">
                   <a id="productTitleSide">Product 1</a>
                   <img id="productImgSide" src="amazon_logo.png" alt="Amazon"></a>
               </li>
               <li>
                   <a href="" data-toggle="collapse" aria-expanded="false">Product 2</a>
-              </li>
-              <li>
-                  <a href="" data-toggle="collapse" aria-expanded="false">Product 3</a>
-              </li>
+              </li> -->
           </ul>
 
           <ul class="list-unstyled CTAs">
-              <!-- <li>
-                  <a href="" class="share">Share with friends</a>
-              </li> -->
               <br>
               <li>
                   <a href="" class="email">Send me email</a>
@@ -66,17 +60,17 @@
   <div id="overlay" onclick="off()">
     <div class="jumbo-wrap">
       <div class="jumbotron">
-        <span class="close">&times;</span>
-          <div class="jumbo-content">
-          <h3 id="productTitle">Product detail</h3>
-          <br>
-          <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon"></a>
-          <br/>
-          <p>
-            <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg email" role="button">Buy this</a>
-            <a class="btn btn-lg email" href="#" role="button">Send me an email</a>
-          </p>
-      </div>
+        <!-- <span class="close">&times;</span> -->
+          <div id="detail" class="jumbo-content">
+            <!-- <h3 id="productTitle">Product detail</h3>
+            <br>
+            <a href="https://www.amazon.com" onclick="off()"><img id="productImg" src="amazon_logo.png" alt="Amazon"></a>
+            <br/>
+            <p>
+              <a id="productUrl" href="https://www.amazon.com" target="_blank" class="btn btn-lg email" role="button">Buy this</a>
+              <a class="btn btn-lg email" href="#" role="button">Send me an email</a>
+            </p> -->
+        </div>
       </div>
     </div>
   </div>
@@ -208,14 +202,29 @@ media.addEventListener('playing', off);
 
 function on() {
   const range = findRange(media.currentTime);
-  const product = products[range][0];
-  productUrl.href = product.url;
-  productImg.src = product.img;
-  productTitle.innerText = product.title;
+  console.log(products[range].length);
+  $('#productlist').html("");
+  $('#detail').html("");
+  for(i=0;i<products[range].length;i++){
+    const product = products[range][i];
+    $('#productlist').append(
+      '<li class="active" onclick="showDetail('+ i +')"><a>'+product.title+'</a>'+
+      '<img class="imageList" src="'+product.img +'"></a></li>'
+    );
+  }
+// $('#productlist').append(
+//       '<li class="active" onclick="showDetail()"><a>'+product.title+'</a>'+
+//       '<img src="'+product.img +'"></a></li>');
 
-  productTitleSide.innerText = product.title;
-  productImgSide.src = product.img;
-  // document.getElementById("overlay").style.display = "block";
+
+  // const product = products[range][0];
+  // productUrl.href = product.url;
+  // productImg.src = product.img;
+  // productTitle.innerText = product.title;
+  //
+  // productTitleSide.innerText = product.title;
+  // productImgSide.src = product.img;
+  //
   $('#sidebar').addClass('active');
   $('.collapse.in').toggleClass('in');
   $('a[aria-expanded=true]').attr('aria-expanded', 'false');
@@ -241,7 +250,15 @@ function ad_prompt() {
   }
 }
 
-function showDetail(){
+function showDetail(i){
+  const range = findRange(media.currentTime);
+  const product = products[range][i];
+  $('#detail').append(
+    '<h3 class="productTitle">' + product.title +'</h3><br><a href="' +
+    product.url + '"onclick="off()"><img src="' + product.img +
+    '" alt="Amazon"></a></br><p><a href="' + product.url+'"target="_blank" class="btn btn-lg email" role="button">Buy this</a>'+
+    '<a class="btn btn-lg email" href="#" role="button">Send me an email</a></p>'
+  );
   document.getElementById("overlay").style.display = "block";
   $('#sidebar').removeClass('active');
 }

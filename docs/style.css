@@ -17,10 +17,10 @@ a:focus {
 ----------------------------------------------------- */
 
 #sidebar {
-    width: 350px;
+    width: 300px;
     position: fixed;
     top: 0;
-    left: -350px;
+    left: -300px;
     height: 100%;
     z-index: 999;
     background: #7386D5;
@@ -224,7 +224,7 @@ img {
     display: block;
 }
 
-#productImgSide{
+.imageList{
     width: 200px;
 }
 #prompt {
@@ -260,6 +260,6 @@ video::-webkit-media-controls-overlay-play-button {
   /* animation-duration: 0.1s!important; */
 }
 
-#productTitleSide{
+.productTitleSide{
   cursor: pointer;
 }
