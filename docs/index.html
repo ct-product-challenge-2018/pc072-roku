@@ -29,21 +29,13 @@
     <div class="sidebar-header">
       <h3>Product List</h3>
     </div>
-
     <ul id="productlist" class="list-unstyled components">
-        <!-- <li class="active" onclick="showDetail()">
-            <a id="productTitleSide">Product 1</a>
-            <img id="productImgSide" src="amazon_logo.png" alt="Amazon"></a>
-        </li>
-        <li>
-            <a href="" data-toggle="collapse" aria-expanded="false">Product 2</a>
-        </li> -->
     </ul>
   </nav>
 </div>
 
-<div class="player" onclick="paus()">
-  <video controls>
+<div class="player">
+  <video onclick="paus()" controls>
     <source src="https://ct-product-challenge-2018.github.io/pc072-roku/trailer.mp4" type="video/mp4">
     Your browser doesn't support streaming this video.
   </video>
@@ -68,6 +60,13 @@
 <script type="text/javascript">
 
 var products = {
+  "1-5": [
+    {
+        "title": "Star Wars - The Last Jedi",
+        "img": "https://static.raru.co.za/cover/2017/10/06/6093583-l.jpg?v=1507280722.jpg",
+        "url": "https://www.amazon.com/Star-Wars-Last-Bonus-Content/dp/B0784YGPNS"
+    }
+  ],
   "5-10": [
     {"title": "LEGO AT-AT",
       "img": "https://images-na.ssl-images-amazon.com/images/I/91lXOazRnFL._SX679_.jpg",
@@ -174,7 +173,6 @@ document.onkeypress = function(e) { if ( (e || window.event).keyCode === 32 /* s
 function paus(){
   media.paused ? media.play() : media.pause();
   $('#sidebar').removeClass('active');
-  // $('.overlaybar').removeClass('active');
 }
 
 media.addEventListener('pause', on);
