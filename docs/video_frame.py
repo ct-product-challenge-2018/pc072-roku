@@ -1,5 +1,6 @@
 # you need to install cv2
-import cv2
+import cv2, os
+
 interval = 1 # every 1 seconds
 
 if __name__ == '__main__' :
@@ -20,6 +21,9 @@ if __name__ == '__main__' :
     image_count = 0
     frame_count = 1
     success = True
+
+    if not os.path.exists('screenshots'):
+    	os.makedirs('screenshots')
 
     while success:
         success, image = video.read()
