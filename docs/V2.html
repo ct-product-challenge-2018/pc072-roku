@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap CSS CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="style.css">
+
+<!-- Font Awesome JS -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<!-- <body onclick="paus()"> -->
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+    <div id="dismiss">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+
+    <div class="sidebar-header">
+      <h3>Product List</h3>
+    </div>
+    <ul id="productlist" class="list-unstyled components">
+    </ul>
+  </nav>
+</div>
+
+<div class="player">
+  <video onclick="paus()" controls>
+    <source src="https://ct-product-challenge-2018.github.io/pc072-roku/trailer.mp4" type="video/mp4">
+    Your browser doesn't support streaming this video.
+  </video>
+  <div id="prompt" onclick="on()">
+    <i class="fab fa-adversal fa-3x" style="color:white"></i>
+  </div>
+  <div id="overlay">
+    <div class="jumbo-wrap">
+      <div class="jumbotron">
+          <div id="detail" class="jumbo-content">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+var products = {
+  "1-5": [
+    {
+        "title": "Star Wars - The Last Jedi",
+        "img": "https://static.raru.co.za/cover/2017/10/06/6093583-l.jpg?v=1507280722.jpg",
+        "url": "https://www.amazon.com/Star-Wars-Last-Bonus-Content/dp/B0784YGPNS"
+    }
+  ],
+  "5-10": [
+    {"title": "Star Wars Whisky SetT",
+      "img": "https://i.etsystatic.com/14272093/r/il/403ea4/1335579620/il_570xN.1335579620_o94r.jpg",
+      "url": "https://www.etsy.com/listing/490477798/star-wars-gift-glass-whiskey-decanter?"},
+    {"title": "AT-AT T-Shirt",
+      "img": "https://i.etsystatic.com/7975184/r/il/87a15d/1350105230/il_570xN.1350105230_chia.jpg",
+      "url": "https://www.etsy.com/listing/557907026/star-wars-at-at-walker-christmas?"},
+    {"title": "A girl and her AT",
+      "img": "https://i.etsystatic.com/13998177/r/il/df8d9d/1523200768/il_fullxfull.1523200768_es1g.jpg",
+      "url": "https://www.etsy.com/listing/642851308/a-girl-and-her-at-at-laptop-decal-star?"}
+  ],
+  "10-15": [
+    {"title": "Stormtrooper Electronic Mask",
+      "img": "https://images-na.ssl-images-amazon.com/images/I/81QbzgNccXL._SX679_.jpg",
+      "url": "https://www.amazon.com/Star-Wars-First-Stormtrooper-Electronic/dp/B01N3AYU5J"},
+    {"title": "Stormtrooper Model",
+      "img": "https://i.ebayimg.com/images/g/KyYAAOSwCU1YrIk3/s-l1600.jpg",
+      "url": "https://www.ebay.com/itm/STAR-WARS-ELITE-SERIES-Imperial-Stormtrooper-NIB-DIE-CAST-ACTION-FIGURE-MINT/222417216136?hash=item33c9196288:rk:1:pf:0"},
+    {"title": "Stormtrooper Shirt",
+      "img": "https://i.etsystatic.com/10924653/r/il/28d33e/1536243801/il_1140xN.1536243801_n8c0.jpg",
+      "url": "https://www.etsy.com/listing/233374222/stormtrooper-just-chillin-t-shirt-adult?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=stormtrooper&ref=sr_gallery-2-33&organic_search_click=1"}
+  ],
+  "15-22": [
+    {"title":"Kylo Ren Action Figure",
+      "url": "https://www.amazon.com/Star-Wars-Episode-Action-Figure/dp/B06Y4FYVCN",
+      "img": "https://images-na.ssl-images-amazon.com/images/I/91DriEThV1L._SL1500_.jpg"},
+    {"title":"Kylo Ren Helmet",
+      "url": "https://www.etsy.com/listing/610312475/kylo-ren-mask-helmet-extreme-details-hd?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=kylo+ren&ref=sr_gallery-1-5&organic_search_click=1",
+      "img": "https://i.etsystatic.com/15331528/r/il/c24a50/1488306678/il_1140xN.1488306678_pv46.jpg"},
+    {"title":"Kylo Ren Fighter",
+      "url": "https://www.amazon.com/Star-Wars-Kylo-Ren-Fighter/dp/B076MDL49S?keywords=star+wars+the+last+jedi+kylo+ren&qid=1540591074&sr=8-17&ref=sr_1_17",
+      "img": "https://images-na.ssl-images-amazon.com/images/I/61K-vn2wthL._SL1000_.jpg"}
+  ],
+  "22-28": [
+    {"title": "Rey Costume for Kids",
+      "url": "https://www.amazon.com/Star-Wars-Costume-Kids-Last/dp/B074W5VLMS",
+      "img": "https://images-na.ssl-images-amazon.com/images/I/51aT%2BwhW4zL._UX679_.jpg"},
+    {"title": "Rey Costume for Adults",
+      "url": "https://www.etsy.com/listing/463977421/rebel-legion-replica-rey-vest-and?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=rey+star+wars&ref=sr_gallery-1-5&organic_search_click=1&frs=1",
+      "img": "https://i.etsystatic.com/8256785/r/il/e42218/1578622091/il_570xN.1578622091_5nxe.jpg"},
+    {"title": "Rey Costume",
+      "url": "https://www.etsy.com/listing/549536677/space-resistance-vest-costume?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=rey+star+wars&ref=sr_gallery-1-6&organic_search_click=1",
+      "img": "https://i.etsystatic.com/12339207/r/il/58b0e8/1523694597/il_fullxfull.1523694597_992b.jpg"}
+  ],
+  "28-36": [
+    {"title":"Rey Mini Faux Leather Backpack Standard",
+    "url": "https://www.amazon.com/Star-Wars-Leather-Backpack-Standard/dp/B078MTK5BF",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/41wK2cCGj1L.jpg"},
+    {"title":"Skellig Michael Cruises",
+    "url": "https://www.skelligmichaelcruises.com/",
+    "img": "https://www.skelligmichaelcruises.com/wp-content/uploads/2015/10/slider4.jpg"},
+    {"title":"Luke Skywalker Toy",
+    "url": "https://toywiz.com/star-wars-the-last-jedi-elite-series-luke-skywalker-exclusive-6-inch-diecast-figure/?gclid=EAIaIQobChMIh4fZi-zX3gIVj4jICh1p1wEoEAkYIiABEgKCX_D_BwE",
+    "img": "https://cdn8.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/171415/243639/apijf2ihj__23421.1504709951.jpg?c=2&imbypass=on"}
+  ],
+  "36-42": [
+    {"title":"Luke Skywalker 3 3/4-Inch Action Figure",
+    "url": "https://www.amazon.com/Star-Wars-Skywalker-4-Inch-Action/dp/B075SMH8B9",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/810jYSh6-EL._SL1500_.jpg"},
+    {"title":"Custom made lightsaber",
+    "url": "https://www.etsy.com/listing/386804316/bastion-custom-saber-chose-hilt-only-or?gpla=1&gao=1&utm_campaign=shopping_us_Saberforge_sfc_osa&utm_medium=cpc&utm_source=google&utm_custom1=0&utm_content=7192165&gclid=EAIaIQobChMIlPbIje3X3gIVhITICh3vGwBpEAkYHSABEgIJR_D_BwE",
+    "img": "https://i.etsystatic.com/7192165/r/il/78f0d2/993387570/il_570xN.993387570_fney.jpg"},
+    {"title":"Special Lightsaber",
+    "url": "https://www.etsy.com/listing/387620744/templar-custom-saber-chose-hilt-only-or?gpla=1&gao=1&utm_campaign=shopping_us_Saberforge_sfc_osa&utm_medium=cpc&utm_source=google&utm_custom1=0&utm_content=7192165&gclid=EAIaIQobChMIjOLQ4u3X3gIVi4zICh3CYQDLEAkYDyABEgJHAvD_BwE",
+    "img": "https://i.etsystatic.com/7192165/r/il/0eb990/996848122/il_570xN.996848122_d4av.jpg"}
+  ],
+  "42-56": [
+    {"title":"The Black Series Rey (Jedi Training) Force FX Lightsaber",
+      "img": "https://images-na.ssl-images-amazon.com/images/I/61VxOAUiuwL._SL1500_.jpg",
+      "url": "https://www.amazon.com/Star-Wars-Black-Training-Lightsaber/dp/B01LYO27L0"},
+    {"title":"POP – Luke Skywalker",
+      "url": "https://www.barnesandnoble.com/w/toys-games-pop-star-wars-tlj-luke-skywalker/32297929?ean=0889698317887&st=PLA&sid=BNB_New+Core+Shopping+Top+Margin+EANs&sourceId=PLAGoNA&dpid=tdtve346c&2sid=Google_c&gclid=EAIaIQobChMI8a2CsOzX3gIVDYTICh3YuwFGEAkYJiABEgIYOPD_BwE",
+      "img": "https://prodimage.images-bn.com/pimages/0889698317887_p0_v2_s550x406.jpg"},
+    {"title":"Luke Skywalker (Deluxe Version)",
+      "url": "https://www.sideshowtoy.com/collectibles/star-wars-luke-skywalker-deluxe-version-hot-toys-903204/?utm_source=Google&utm_medium=OSP&utm_campaign=GoogleMerchant&utm_nooverride=1&gclid=EAIaIQobChMIv5vx-ZbZ3gIVBY7ICh3ZBgYvEAkYHyABEgIG_fD_BwE",
+      "img": "https://www.sideshowtoy.com/wp-content/uploads/2017/12/star-wars-luke-skywalker-deluxe-sixth-scale-hot-toys-feature-903204.jpg"}
+  ]
+}
+function findRange(currentTime) {
+  const keys = Object.keys(products);
+  for(var x=0; x<keys.length; x++){
+    const key = keys[x];
+    const range = key.split('-')
+    const lower = range[0]
+    const upper = range[1]
+    if(currentTime >= lower && currentTime <= upper) {
+      return key;
+    }
+  }
+  return false;
+}
+var media = document.querySelector('video');
+var productUrl = document.querySelector('#productUrl');
+var productImg = document.querySelector('#productImg');
+var productTitle = document.querySelector('#productTitle');
+var productTitleSide = document.querySelector('#productTitleSide');
+var productImgSide = document.querySelector('#productImgSide');
+document.onkeypress = function(e) { if ( (e || window.event).keyCode === 32 /* space key */ )
+  { media.paused ? media.play() : media.pause(); } };
+function paus(){
+  media.paused ? media.play() : media.pause();
+  $('#sidebar').removeClass('active');
+}
+media.addEventListener('pause', on);
+media.addEventListener('playing', off);
+function on() {
+  const range = findRange(media.currentTime);
+  console.log(products[range].length);
+  $('#productlist').html("");
+  $('#detail').html("");
+  for(i=0;i<products[range].length;i++){
+    const product = products[range][i];
+    $('#productlist').append(
+      '<li onclick="showDetail('+ i +')"><a>'+product.title+'</a>'+
+      '<img class="imageList" src="'+product.img +'"></a></br></li>'
+    );
+  }
+  $( "#productlist li" ).first().addClass( "activeProduct" );
+  $('#sidebar').addClass('active');
+  $('.collapse.in').toggleClass('in');
+  $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+  listcounter = 0;
+  console.log('on', listcounter)
+}
+function off() {
+  document.getElementById("overlay").style.display = "none";
+  media.play();
+  $('#sidebar').removeClass('active');
+}
+media.ontimeupdate = function() {ad_prompt()};
+var prev_range = false;
+function ad_prompt() {
+  cur_range = findRange(media.currentTime);
+  if (cur_range != prev_range) {
+    prev_range = cur_range;
+    var prompt = document.getElementById("prompt");
+    prompt.style.display = "block";
+    prompt.addEventListener("animationend", function() {prompt.style.display = "none"}, false);
+  }
+}
+function showDetail(i){
+  const range = findRange(media.currentTime);
+  const product = products[range][i];
+  $('#detail').append(
+    '<h3 class="productTitle">' + product.title +'</h3><br><a href="' +
+    product.url + '"><img src="' + product.img +
+    '" alt="Product Not Found"></a></br><p><a href="' + product.url+'"target="_blank" class="btn btn-lg email" role="button">Buy this</a>'+
+    '<a class="btn btn-lg email" href="#" role="button">Send me an email</a></p>'
+  );
+  document.getElementById("overlay").style.display = "block";
+  $('#sidebar').removeClass('active');
+  // detailShowing = true;
+}
+</script>
+
+<!-- this part can be deleted later -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#sidebar").mCustomScrollbar({
+      theme: "minimal"
+    });
+    $('#dismiss, .overlaybar').on('click', function () {
+      $('#sidebar').removeClass('active');
+    });
+    $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').addClass('active');
+      $('.collapse.in').toggleClass('in');
+      $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+  });
+// detailShowing = false;
+$(document).keydown(function(e) {
+  var $curr = $('.activeProduct');
+  const range = findRange(media.currentTime);
+  switch (e.keyCode) {
+    case 38:
+      if (listcounter > 0) {
+        listcounter--;
+        $curr.css("background-color", "#7386D5");
+        $curr.css("color", "white");
+        $curr.css("font-weight", "normal");
+        $('.activeProduct').removeClass();
+        $curr = $curr.prev();
+        $curr.addClass('activeProduct');
+        $curr.css("background-color", "white");
+        $curr.css("color", "black");
+        $curr.css("font-weight", "bold");
+        $('#sidebar').mCustomScrollbar('scrollTo', $curr);
+      }
+      break;
+    case 40:
+      if (listcounter < products[range].length-1) {
+        listcounter++;
+        $curr.css("background-color", "#7386D5");
+        $curr.css("color", "white");
+        $curr.css("font-weight", "normal");
+        $('.activeProduct').removeClass();
+        $curr = $curr.next();
+        $curr.addClass('activeProduct');
+        $curr.css("background-color", "white");
+        $curr.css("color", "black");
+        $curr.css("font-weight", "bold");
+        $('#sidebar').mCustomScrollbar('scrollTo', $curr);
+      }
+      break;
+    case 13: // enter key
+      console.log($('#detail').html().length);
+      if ($('#detail').html().length == "") {
+        showDetail(listcounter);
+      }
+      break;
+  }
+});
+</script>
+
+</body>
+</html>
