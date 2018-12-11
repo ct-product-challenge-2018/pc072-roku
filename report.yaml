@@ -1,10 +1,9 @@
 company: Roku
   name: KonnActAd
   logo: roku-logo.png
-product_hmw: How might we ad viewing experience on TV?
-product_narrative: Our product is an ad overlay system on video streaming platform. The ads are added as metadata into the video and they are all related to what is in shown the screen. 
+product_hmw: How might we improve the ad viewing experience on TV?
+product_narrative: Our product is an ad overlay system for the video streaming platform. When you pause the video, you can see a list of products/service and they are closely related to what is shown on the screen.
 
-  
 team:
   picture: team_pic.jpg
   roster:
