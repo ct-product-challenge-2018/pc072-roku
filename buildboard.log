@@ -1,1 +1,5 @@
-Assets we could fetch: ['report.yaml', 'roku-logo.png', 'team_pic.jpg', 'ryan.jpg', 'zhenwei.png', 'Roger.png', 'sergio.png']
+Incorrect yaml format for report.yaml: mapping values are not allowed here
+  in "<byte string>", line 2, column 7:
+      name: KonnActAd
+          ^.
+Unable to fetch assets for pc072-roku.
