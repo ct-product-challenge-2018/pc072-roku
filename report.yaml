@@ -1,8 +1,9 @@
-company:
+company: Roku
   name: KonnActAd
   logo: roku-logo.png
-product_hmw: How might we gain the trust (not just consent) of consumers to use their data for personalizing their viewing experience and what ads they see?
-# product_narrative: |
+product_hmw: How might we ad viewing experience on TV?
+product_narrative: Our product is an ad overlay system on video streaming platform. The ads are added as metadata into the video and they are all related to what is in shown the screen. 
+
   
 team:
   picture: team_pic.jpg
@@ -33,3 +34,9 @@ assets:
   url: https://docs.google.com/presentation/d/1FSqNn9cUS97XbGAL1wvDNASfm_KkpwnLOF_IuRWCw_k/
 - title: Sprint 3 Presentation
   url: https://docs.google.com/presentation/d/1a3nvGf3bdMVTx27a-GWFc1jHylTRabKB0mLnZQe6W84/
+- title: Final Presentation
+  url: https://docs.google.com/presentation/d/1CVLyT8SRp_SsPTgHJ0aKeVDkUTDnnr7fniQgozSOd78/edit?usp=sharing
+- title: Github repo
+  url: https://github.com/ct-product-challenge-2018/pc072-roku
+  
+ 
